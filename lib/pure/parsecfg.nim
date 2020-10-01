@@ -581,9 +581,9 @@ proc setSectionKey*(dict: var Config, section, key, value: string) =
   dict[section] = t
 
 iterator sections*(dict: Config): string {.since: (1, 3).} =
-    ## Iterate throught the sections in the config
-    for section in dict.keys:
-      yield section
+  ## Iterate throught the sections in the config
+  for section in dict.keys:
+    yield section
 
 proc delSection*(dict: var Config, section: string) =
   ## Deletes the specified section and all of its sub keys.
