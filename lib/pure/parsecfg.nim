@@ -578,16 +578,10 @@ proc setSectionKey*(dict: var Config, section, key, value: string) =
   t[key] = value
   dict[section] = t
 
-proc sections*(dict: Config): seq[string] =
-  ## Gets the defined Sections in the configuration in a sequence.
-  ## Return an empty sequence if no Sections are defined.
-
-  if dict.len < 1: return @[]
-  result = newSeq[string](dict.len)
-  var i = 0
+iterator sections*(dict: Config): string =
+  ## Iterate throught the sections in the config
   for section in dict.keys:
-    result[i] = section
-    inc i
+    yield section
 
 proc delSection*(dict: var Config, section: string) =
   ## Deletes the specified section and all of its sub keys.
